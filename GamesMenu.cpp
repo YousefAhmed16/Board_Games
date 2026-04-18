@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file  GamesMenu.cpp
  * @brief Entry point for Games Menu.
  */
@@ -43,28 +43,30 @@ int main() {
         cout << "|      Games Menu      |\n";
         cout << "-----------------------\n";
         cout << endl;
-
-        cout << "7. 4x4 Tic-Tac-Toe\n";
+        cout << "1. 4x4 Tic-Tac-Toe\n";
         cout << endl;
 
-        cout << "8. Pyramid Tic-Tac-Toe\n";
+        cout << "2. Pyramid Tic-Tac-Toe\n";
         cout << endl;
 
-        cout << "9. Numerical Tic Tac Toe\n";
+        cout << "3. Numerical Tic Tac Toe\n";
         cout << endl;
 
-        cout << "10. Obstacles Tic-Tac-Toe\n";
+        cout << "4. Obstacles Tic-Tac-Toe\n";
+        cout << endl;
+
+        cout << "5. Memory Tic-Tac-Toe\n";
         cout << endl;
 
         cout << "\033[0m";
 
         cout << "Choose a number: " << endl;
 
-        int number = GetTrueInput(7, 10);
+        int number = GetTrueInput(1, 5); // get a vaild game number 
         cout << "\n";
 
         switch (number) {
-case 7: {
+        case 1: {
             srand(static_cast<unsigned int>(time(0)));
             UI<char>* fourbyfour_ui = new FourByFour_UI();
             Board<char>* fourbyfour_board = new FourByFour_Board();
@@ -88,7 +90,7 @@ case 7: {
             break;
         }
 
-case 8: {
+        case 2: {
             srand(static_cast<unsigned int>(time(0)));
             UI<char>* pyramid_ui = new Pyramid_UI();
             Board<char>* pyramid_board = new Pyramid_Board();
@@ -110,8 +112,7 @@ case 8: {
             delete pyramid_ui;
             break;
         }
-
-case 9: {
+        case 3: {
             srand(static_cast<unsigned int>(time(0)));
 
             UI<int>* game_ui = new Numerical_UI();
@@ -142,7 +143,7 @@ case 9: {
             break;
         }
 
-case 10: {
+        case 4: {
             srand(static_cast<unsigned int>(time(0)));
             UI<char>* Obstacle_ui = new Obstacles_UI();
             Board<char>* Obstacle_board = new Obstacles_Board();
@@ -168,10 +169,37 @@ case 10: {
             break;
         }
 
-        default:
-            cout << "Invalid choice.\n";
+        case 5: {
+            srand(static_cast<unsigned int>(time(0)));
+            UI<char>* Memory_ui = new Memory_UI();
+            Board<char>* Memory_board = new Memory_Board();
+            Player<char>** Memory_players = Memory_ui->setup_players();
+
+			cout << "\033[93m";
+            cout << "Game Rules: When a player places a mark, it is immediately hidden from view.\n" 
+                " Players must remember the positions of all marks to plan their strategy.\n"
+                " Winning Condition: The first player to align three of their hidden marks in a row wins. \n The game is a draw"
+                " if the board fills without a winner.\n";
+			cout << "\033[0m";
+
+            GameManager<char> Memory_game(Memory_board, Memory_players, Memory_ui);
+            Memory_game.run();
+            // cleanup:
+            delete Memory_board;
+            for (int i = 0; i < 2; ++i) delete Memory_players[i];
+            delete[] Memory_players;
+            delete Memory_ui;
+            break;
+        }
+        }
+
+		cout << "Do you want to play another game? (y / n): ";
+		char ch;
+		cin >> ch;
+        if (ch == 'n' || ch == 'N') {
+            cout << "Thank you for playing! Goodbye!" << endl;
+            break;
         }
     }
-
-    return 0;
 }
+

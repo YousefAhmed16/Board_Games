@@ -1,7 +1,5 @@
 ﻿// BoardGame_classes.h
 // Version 2.3
-// Date: 25 Nov 2023
-// Author: Mohammad El-Ramly
 // Putpose: Core classes to build board XO-style games (x-o, connect4, etc)
 
 #ifndef _BOARDGAME_CLASSES_H

@@ -2,12 +2,13 @@
 
 ## Overview
 
-This project is a C++ application that includes four different board games:
+This project is a C++ application that includes five different board games:
 
 * 4x4 Tic-Tac-Toe
 * Pyramid Tic-Tac-Toe
 * Numerical Tic-Tac-Toe
 * Obstacles Tic-Tac-Toe
+* Memory Tic-Tac-Toe
 
 The project was built using Object-Oriented Programming (OOP) concepts such as classes, inheritance, polymorphism, and encapsulation.
 
@@ -54,6 +55,10 @@ A number-based Tic-Tac-Toe game where players use numbers instead of symbols.
 ### 4. Obstacles Tic-Tac-Toe
 
 A Tic-Tac-Toe variation that includes blocked cells and obstacles on the board.
+
+### 5. Memory Tic-Tac-Toe
+
+A Tic-Tac-Toe variation that combines memory and strategy, where players need to remember hidden positions and make the correct moves to win.
 
 ---
 
